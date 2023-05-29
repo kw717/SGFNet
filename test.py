@@ -94,11 +94,11 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description="evaluate")
-    parser.add_argument("--logdir", default=".\\run", type=str,
+    parser.add_argument("--logdir", default="", type=str,
                         help="run logdir")
-    parser.add_argument("--data-root", default="E:\\pydeeplearning\\2022_AAAI_EGFNet_code\\dataset", type=str,
+    parser.add_argument("--data-root", default="", type=str,
                         help="path to dataset root")
-    parser.add_argument("--pth", default="E:\pydeeplearning\wyknet\experiment\A91model.pth", type=str,
+    parser.add_argument("--pth", default="", type=str,
                         help="path to model weight")
     parser.add_argument("-s", type=bool, default=False,
                         help="save predict or not")

@@ -14,7 +14,7 @@ defult_cfg={
     "inputs": "rgbd",
 
     "dataset": "irseg",
-    "root": "E:\\pydeeplearning\\2022_AAAI_EGFNet_code\\dataset",
+    "root": "",
     "n_classes": 9,
     "id_unlabel": -1,
     "brightness": 0.5,
