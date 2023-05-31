@@ -15,7 +15,7 @@ from toolbox import get_model, compute_speed
 from toolbox import averageMeter, runningScore
 from toolbox import class_to_RGB, load_ckpt, save_ckpt
 
-from toolbox.datasets.irseg import IRSeg
+from toolbox.datasets.pst900 import IRSeg
 from SGFNet import SGFNet
 
 
@@ -29,7 +29,7 @@ def evaluate(args, logdir, save_predict=False, options=['val', 'test', 'test_day
         loaders.append((opt, DataLoader(dataset, batch_size=1, shuffle=True, num_workers=1)))
         cmap = dataset.cmap
 
-    model = SGFNet(9).to(device)
+    model = SGFNet(5).to(device)
 
     model.load_state_dict(torch.load(args.pth, map_location='cuda:0'))
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description="evaluate")
-    parser.add_argument("--logdir", default="runs", type=str,
+    parser.add_argument("--logdir", default="", type=str,
                         help="run logdir")
     parser.add_argument("--data-root", default="", type=str,
                         help="path to dataset root")
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parser.add_argument("-s", type=bool, default=False,
                         help="save predict or not")
     parser.add_argument("-option", type=str, default="test",
-                        help="choose test set. options=['test', 'test_day', 'test_night']")
+                        help="choose test set. options=['test']")
     args = parser.parse_args()
 
     evaluate(args, args.logdir, options=[args.option], prefix='', save_predict=args.s)
