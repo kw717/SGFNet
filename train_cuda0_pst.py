@@ -48,7 +48,7 @@ class eeemodelLoss(nn.Module):
         # self.LovaszSoftmax = lovasz_softmax()
         self.cross_entropy = nn.CrossEntropyLoss()
 
-        self.semantic_loss = nn.CrossEntropyLoss(weight=self.class_weight_semantic)
+        self.semantic_loss = nn.CrossEntropyLoss()
         self.binary_loss = nn.CrossEntropyLoss(weight=self.class_weight_binary)
         self.boundary_loss = nn.CrossEntropyLoss(weight=self.class_weight_boundary)
 
@@ -69,7 +69,7 @@ class eeemodelLoss(nn.Module):
 
 def run():
 
-    model = SGFNet(9).cuda()
+    model = SGFNet(5).cuda()
     if gpu != '':
         os.environ['CUDA_VISIBLE_DEVICES'] = gpu
         device_ids = range(torch.cuda.device_count())
@@ -105,7 +105,7 @@ def run():
 
     train_loss_meter = averageMeter()
     test_loss_meter = averageMeter()
-    running_metrics_test = runningScore(9, ignore_index=-1)
+    running_metrics_test = runningScore(5, ignore_index=-1)
     best_test = 0
 
 
